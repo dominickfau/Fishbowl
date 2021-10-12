@@ -60,6 +60,10 @@ dictConfig({
             "level": "INFO",
             "handlers": ["main", "sql_pool", "sql_engine", "exception_log"]
         },
+        "backend": {
+            "level": "INFO",
+            "handlers": ["main"]
+        },
         "sqlalchemy.engine": {
             "level": "INFO",
             "handlers": ["sql_engine"]
@@ -75,9 +79,9 @@ dictConfig({
     }
 })
 
-logger = logging.getLogger("root")
-logger.info("=" * 60)
-logger.info("Starting...")
+logger = logging.getLogger("backend")
+logging.getLogger("root").info("=" * 60)
+logging.getLogger("root").info("Starting...")
 
 
 def handle_exception(exc_type, exc_value, exc_traceback):
@@ -86,7 +90,7 @@ def handle_exception(exc_type, exc_value, exc_traceback):
         return
     
     print("Uncaught exception:", exc_type, exc_value)
-    logger.critical(f"Uncaught exception: {exc_type, exc_value}")
+    logging.getLogger("root").critical(f"Uncaught exception: {exc_type, exc_value}")
     logging.getLogger("exception_log").error("Uncaught exception", exc_info=(exc_type, exc_value, exc_traceback))
     
 
