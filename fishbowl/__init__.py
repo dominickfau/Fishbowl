@@ -29,14 +29,14 @@ dictConfig({
         "main": {
             "class": "logging.handlers.RotatingFileHandler",
             "filename": os.path.join(logs_dir, "main.log"),
-            "maxBytes": 10 * 1024 * 1024,
+            "maxBytes": 60 * 1024 * 1024,
             "backupCount": 3,
             "formatter": "default"
         },
         "sql_pool": {
             "class": "logging.handlers.RotatingFileHandler",
             "filename": os.path.join(logs_dir, "sql_pool.log"),
-            "maxBytes": 10 * 1024 * 1024,
+            "maxBytes": 60 * 1024 * 1024,
             "backupCount": 3,
             "formatter": "default"
         },
@@ -50,7 +50,7 @@ dictConfig({
         "exception_log": {
             "class": "logging.handlers.RotatingFileHandler",
             "filename": os.path.join(logs_dir, "exception_log.log"),
-            "maxBytes": 10 * 1024 * 1024,
+            "maxBytes": 60 * 1024 * 1024,
             "backupCount": 3,
             "formatter": "default"
         }
